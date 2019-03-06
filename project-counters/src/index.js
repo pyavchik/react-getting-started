@@ -1,19 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Counter extends React.Component {
-    render() {
-        return (
-            <div>
-               {this.props.title}
-               <button>{this.props.min}</button>
-               <button>{this.props.max}</button>
-               <button>reset</button>
-            </div>
-        );
-    }
+function App() {
+    let min = 1;
+    let max = 1;
+    return (
+        <div>
+            <Counter title="CounterA " min={min} max={max}/>
+            <Counter title="CounterB " min={min} max={max}/>
+        </div>
+    );
 }
 
-ReactDOM.render(<Counter title="Counter A" min={-1} max={+1}/> , document.getElementById('root'));
-ReactDOM.render(<Counter title="Counter B" min={-1} max={+1}/> , document.getElementById('root2'));
+function Counter(props) {
+    return (
+            <div>
+                <span>{props.title}</span>
+                <span>0</span>
+                <button onClick={minusClick}>-{props.min}</button>
+                <button onClick={plusClick}>+{props.max}</button>
+                <button onClick={resetClick}>Reset</button>
+            </div>
+        );
+}
+
+function minusClick(e) {
+    e.preventDefault();
+    console.log('minusClick');
+}
+
+function plusClick(e) {
+    e.preventDefault();
+    console.log('plusClick');
+}
+
+function resetClick(e) {
+    e.preventDefault();
+    console.log('resetClick');
+}
+
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+);
+
 
