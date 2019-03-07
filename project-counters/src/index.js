@@ -17,25 +17,25 @@ function Counter(props) {
             <div>
                 <span>{props.title}</span>
                 <span>0</span>
-                <button onClick={minusClick}>-{props.min}</button>
-                <button onClick={plusClick}>+{props.max}</button>
-                <button onClick={resetClick}>Reset</button>
+                <button type="button" onClick={minusClick}>-{props.min}</button>
+                <button type="button" onClick={plusClick}>+{props.max}</button>
+                <button type="button" onClick={resetClick}>Reset</button>
             </div>
         );
 }
 
-function minusClick(e) {
-    e.preventDefault();
+function minusClick() {
+
     console.log('minusClick');
 }
 
-function plusClick(e) {
-    e.preventDefault();
+function plusClick() {
+
     console.log('plusClick');
 }
 
-function resetClick(e) {
-    e.preventDefault();
+function resetClick() {
+
     console.log('resetClick');
 }
 
