@@ -7,25 +7,31 @@ class BmiCalculator extends React.Component {
         super(props);
 
         this.state = {
-            value: { min: 90, max: 245 , actual: 175},
+            value: 175
+
         };
     }
 
 
+    handleChange = (event) => {
+        this.setState({value: event.target.value})
+    };
 
     render() {
         return (
             <div>
-                <div>Height: 90 <input type="range"  min={this.state.value.min} max={this.state.value.max}  /> 245 <b>151 cm</b></div>
-                <div>Weight: 35 <input type="range" min={this.state.value.min} max={this.state.value.max} /> 200 <b>75 kg</b></div>
-                <span>BMI:</span>
-                <b>32.9 Obese</b>
+                <input
+                    id="typeinp"
+                    type="range"
+                    min="90" max="245"
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    step="1"/>
+                <span> {this.state.value} </span>
             </div>
         );
     }
 }
-
-
 ReactDOM.render(
     <BmiCalculator />,
     document.getElementById('root')
