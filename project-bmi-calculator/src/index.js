@@ -20,14 +20,14 @@ class BmiCalculator extends React.Component {
     render() {
         return (
             <div>
-                <input
-                    id="typeinp"
-                    type="range"
-                    min="90" max="245"
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    step="1"/>
-                <span> {this.state.value} </span>
+                <div>Height: 90 { }
+                    <input type="range"
+                           min="90" max="245"
+                           value={this.state.value}
+                           onChange={this.handleChange}
+                           step="1"/>  245
+                    <b>{this.state.value} cm</b>
+                </div>
             </div>
         );
     }
