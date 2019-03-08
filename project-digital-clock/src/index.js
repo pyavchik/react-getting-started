@@ -1,9 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const digitalClock = (
-    <span>22:22:22</span>
-);
+class DigitalClock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {dateTime: new Date()};
+    }
 
-ReactDOM.render(digitalClock, document.getElementById('root'));
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            dateTime: new Date()
+        });
+    }
+
+    render() {
+        return (
+            <div>
+
+                <span>{this.state.dateTime.toLocaleTimeString()}</span>
+            </div>
+        );
+    }
+}
+
+
+ReactDOM.render(<DigitalClock />, document.getElementById('root'));
 
