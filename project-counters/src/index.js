@@ -1,47 +1,55 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {count: 0};
+    }
+
+    plusClick = () => {
+        this.setState(({ count }) => ({
+            count: count + 1
+        }));
+    };
+
+    minusClick = () => {
+        this.setState(({ count }) => ({
+            count: count -1
+        }));
+    };
+
+    resetClick = () => {
+        this.setState(() => ({
+            count: 0
+        }));
+    };
+
+    render() {
+        return (
+            <div>
+                <span> {this.props.title} </span>
+                <span> {this.state.count} </span>
+                <button type="button" onClick={this.minusClick}> -{this.props.min} </button>
+                <button type="button" onClick={this.plusClick}> +{this.props.max} </button>
+                <button type="button" onClick={this.resetClick}> Reset</button>
+            </div>
+        );
+
+    }
+}
+
 function App() {
-    let min = 1;
-    let max = 1;
     return (
         <div>
-            <Counter title="CounterA " min={min} max={max}/>
-            <Counter title="CounterB " min={min} max={max}/>
+            <Counter title="CounterA " min={1} max={1}/>
+            <Counter title="CounterB " min={1} max={1}/>
         </div>
     );
 }
 
-function Counter(props) {
-    return (
-            <div>
-                <span>{props.title}</span>
-                <span>0</span>
-                <button type="button" onClick={minusClick}>-{props.min}</button>
-                <button type="button" onClick={plusClick}>+{props.max}</button>
-                <button type="button" onClick={resetClick}>Reset</button>
-            </div>
-        );
-}
-
-function minusClick() {
-
-    console.log('minusClick');
-}
-
-function plusClick() {
-
-    console.log('plusClick');
-}
-
-function resetClick() {
-
-    console.log('resetClick');
-}
-
 ReactDOM.render(
-    <App/>,
+    <App />,
+
     document.getElementById('root')
 );
-
-
