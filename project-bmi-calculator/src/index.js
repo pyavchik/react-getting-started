@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-class BmiCalculator extends React.Component {
+class Slider extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            value: 175
-
+            value: this.props.value,
         };
     }
 
@@ -20,19 +19,39 @@ class BmiCalculator extends React.Component {
     render() {
         return (
             <div>
-                <div>Height: 90 { }
+                <div>{this.props.title}: {this.props.min}
                     <input type="range"
-                           min="90" max="245"
+                           min={this.props.min} max={this.props.max}
                            value={this.state.value}
                            onChange={this.handleChange}
-                           step="1"/>  245
-                    <b>{this.state.value} cm</b>
+                           step="1"/>  {this.props.max}
+                    <b>{this.state.value} {this.props.units}</b>
                 </div>
             </div>
         );
     }
 }
+
+function BMI() {
+    return (
+        <div>
+            BMI {11.4} {"Underweight"}
+        </div>
+    )
+
+}
+
+function App() {
+    return (
+        <div>
+            <Slider title="Height" min={90} max={245} units="cm" value={175}/>
+            <Slider title = "Weight" min={35} max={200} units="kg" value={75}/>
+            <BMI title="BMI" />
+        </div>
+    );
+}
+
 ReactDOM.render(
-    <BmiCalculator />,
+    <App />,
     document.getElementById('root')
 );
