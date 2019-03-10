@@ -32,14 +32,28 @@ class Slider extends React.Component {
     }
 }
 
-function BMI() {
-    return (
-        <div>
-            BMI {11.4} {"Underweight"}
-        </div>
-    )
+class BMI extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            height: 100,
+            weight: 100
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    {this.props.title} {this.state.height} {"Underweight"}
+                </div>
+            </div>
+        );
+    }
 }
+
+
 
 function App() {
     return (
