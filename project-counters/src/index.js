@@ -7,6 +7,12 @@ class Counter extends React.Component {
         this.state = {count: 0};
     }
 
+    addClick = (value) => {
+        this.setState(({ count }) => ({
+            count: count + value
+        }));
+    };
+
     plusClick = () => {
         this.setState(({ count }) => ({
             count: count + 1
@@ -30,7 +36,7 @@ class Counter extends React.Component {
             <div>
                 <span> {this.props.title} </span>
                 <span> {this.state.count} </span>
-                <button type="button" onClick={this.minusClick}> -{this.props.min} </button>
+                <button type="button" onClick={this.addClick}> -{this.props.min} </button>
                 <button type="button" onClick={this.plusClick}> +{this.props.max} </button>
                 <button type="button" onClick={this.resetClick}> Reset</button>
             </div>
